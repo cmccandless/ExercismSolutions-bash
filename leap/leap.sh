@@ -3,12 +3,6 @@
 set -o errexit
 set -o nounset
 
-# mod()
-# {
-#   let "$1 % $2 == 0"
-#   [[ -z $result ]]
-# }
-
 is_not_integer()
 {
   echo $1 | grep -E '[^0-9]' &> /dev/null
