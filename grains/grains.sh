@@ -8,16 +8,16 @@ main() {
 
   if [ "$input" == "total" ]; then
     output=$(main 64)
-    echo $(bc <<< "$output + $output - 1")
+    bc <<< "$output + $output - 1"
   else
     if [[ $input -le 0 ]] || [[ $input -gt 64 ]]; then
       echo 'Error: invalid input'
       return 1
     fi
-    let output=1
+    output=1
     while [[ $input -gt 1 ]]; do
       output=$(bc <<< "$output * 2")
-      let "input--"
+      (( input-- ))
     done
     echo "$output"
   fi
