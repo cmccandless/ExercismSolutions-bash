@@ -15,7 +15,7 @@ sum_of_squares()
 
 difference()
 {
-  echo $(( $(square_of_sum $1) - $(sum_of_squares $1) ))
+  echo $(( $(square_of_sum "$1") - $(sum_of_squares "$1") ))
 }
 
-$@
+"$@"

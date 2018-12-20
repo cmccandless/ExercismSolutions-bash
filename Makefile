@@ -2,7 +2,7 @@
 all: lint test-all
 
 lint:
-	@echo "No linter configured"
+	@ls ./*/*.sh | xargs -n1 | grep -v _test | xargs shellcheck
 
 test:
 	@ $(foreach FILE,$(FILES), \

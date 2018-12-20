@@ -10,7 +10,7 @@ main() {
   for (( i=0; i<${#input}; i++ )); do
     (( sum += ${input:$i:1} ** ${#input} ))
   done
-  [[ $sum == $input ]] && echo 'true' || echo 'false'
+  [[ $sum == "$input" ]] && echo 'true' || echo 'false'
 }
 
 main "$@"

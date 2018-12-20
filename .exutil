@@ -1,3 +1,4 @@
 {
-  "track": "bash"
+  "track": "bash",
+  "init_script": "./init.sh"
 }
