@@ -10,13 +10,13 @@ main() {
   for (( i=0; i<${#input}; i++ )); do
     char="${input:$i:1}"
     case "$char" in
-      a|e|i|o|u|l|n|r|s|t) let "score+=1" ;;
-      d|g) let "score+=2" ;;
-      b|c|m|p) let "score+=3" ;;
-      f|h|v|w|y) let "score+=4" ;;
-      k) let "score+=5" ;;
-      j|x) let "score+=8" ;;
-      q|z) let "score+=10" ;;
+      a|e|i|o|u|l|n|r|s|t) (( score += 1 )) ;;
+      d|g) (( score += 2 )) ;;
+      b|c|m|p) (( score += 3 )) ;;
+      f|h|v|w|y) (( score += 4 )) ;;
+      k) (( score += 5 )) ;;
+      j|x) (( score += 8 )) ;;
+      q|z) (( score += 10 )) ;;
     esac
   done
   echo "$score"
