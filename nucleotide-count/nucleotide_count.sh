@@ -24,7 +24,7 @@ main() {
   for nucleotide in $nucleotides; do
     filt="$input"
     for not in $nucleotides; do
-      [[ $nucleotide != $not ]] && filt="${filt//$not}"
+      [[ "$nucleotide" != "$not" ]] && filt="${filt//$not}"
     done
     echo "$nucleotide: ${#filt}"
   done
