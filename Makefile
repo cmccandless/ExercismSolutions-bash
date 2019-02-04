@@ -1,6 +1,9 @@
 .PHONY: lint test
 all: lint test-all
 
+init:
+	sudo apt-get install -y shellcheck
+
 lint:
 	@ls ./*/*.sh | xargs -n1 | grep -v _test | xargs shellcheck
 

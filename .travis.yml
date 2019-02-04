@@ -1,0 +1,16 @@
+---
+language: bash
+sudo: false
+
+before_install:
+  - make init
+
+before_script:
+  - make lint
+
+script:
+  - make test-all
+
+addons:
+  apt:
+    update: true
