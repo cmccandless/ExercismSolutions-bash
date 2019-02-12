@@ -5,7 +5,7 @@ set -o nounset
 
 is_not_integer()
 {
-  echo "$1" | grep -E '[^0-9]' &> /dev/null
+  grep -E '[^0-9]' &> /dev/null <<<"$1"
 }
 
 main() {

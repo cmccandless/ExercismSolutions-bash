@@ -4,7 +4,7 @@ set -o errexit
 set -o nounset
 
 main() {
-  input="$(echo "$1" | tr '[:upper:]' '[:lower:]')"
+  input="$(tr '[:upper:]' '[:lower:]'<<<"$1")"
 
   score=0
   for (( i=0; i<${#input}; i++ )); do

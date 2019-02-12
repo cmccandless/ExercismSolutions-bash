@@ -4,7 +4,7 @@ set -o errexit
 set -o nounset
 
 main() {
-  input="$(echo "${1//-/ }" | tr '[:lower:]' '[:upper:]')"
+  input="$(tr '[:lower:]' '[:upper:]' <<<${1//-/ })"
 
   for word in $input; do
     printf "%s" "${word:0:1}"
