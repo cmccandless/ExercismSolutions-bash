@@ -8,7 +8,7 @@ RNA='GCAU'
 
 main() {
   input="${1:-}"
-  if [ ! -z "$(tr -d "$DNA" <<<"$input")" ]; then
+  if [ -n "$(tr -d "$DNA" <<<"$input")" ]; then
     echo "Invalid nucleotide detected."
     return 1
   fi

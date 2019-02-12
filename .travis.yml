@@ -1,5 +1,6 @@
 ---
 language: bash
+dist: xenial
 sudo: false
 
 before_install:

@@ -1,5 +1,7 @@
 EXTENSION :=sh
 DEPS := shellcheck bats
+LINT_OPTS += "--shell=bash"
+LINT_OPTS += "--exclude=SC2207"
 
 SOURCE_FILES := $(shell find */* -type f -name '*$(EXTENSION)')
 EXERCISES := $(shell find */* -type f -name '*$(EXTENSION)' | cut -d/ -f1 | uniq)
@@ -47,5 +49,5 @@ GET_DEP_LINT = $(filter $(patsubst $(OUT_DIR)/lint-%,%,$@)%,$(SOURCE_FILES))
 $(LINT_OBJECTS): $$(GET_DEP_LINT) | $(OUT_DIR)
 	$(eval EXERCISE := $(patsubst $(OUT_DIR)/lint-%,%,$@))
 	@ echo "Linting $(EXERCISE)..."
-	@ ls $(EXERCISE)/*.$(EXTENSION) | xargs -n1 | grep -v _test | xargs shellcheck
+	@ ls $(EXERCISE)/*.$(EXTENSION) | xargs -n1 | grep -v _test | xargs shellcheck $(LINT_OPTS)
 	@ touch $@

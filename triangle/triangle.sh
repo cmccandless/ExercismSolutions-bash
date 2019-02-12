@@ -17,11 +17,11 @@ is_isosceles() {
 
 main() {
   type="${1}"
-  sides=($2 $3 $4)
-  IFS=$'\n' sorted=($(sort <<<"${sides[*]}"))
-  a=${sorted[0]}
-  b=${sorted[1]}
-  c=${sorted[2]}
+  sides=("$2" "$3" "$4")
+  IFS=$'\n' sorted=( $(sort <<<"${sides[*]}") )
+  a="${sorted[0]}"
+  b="${sorted[1]}"
+  c="${sorted[2]}"
   if ! le "$a" 0 && ! le "$a + $b" "$c"; then
     case "$type" in
       equilateral)
