@@ -9,9 +9,9 @@ OBJECTS=$(addprefix $(OUT_DIR)/,$(EXERCISES))
 LINT_OBJECTS=$(addprefix $(OUT_DIR)/,$(LINT_TARGETS))
 MIGRATE_OBJECTS := $(addsuffix /.exercism/metadata.json, $(EXERCISES))
 
-
 .PHONY: all init no-skip clean lint test check-migrate
-all: no-skip check-migrate lint test
+all: lint test
+pre-push pre-commit: no-skip check-migrate lint test
 
 init:
 	sudo apt-get install -y $(DEPS)
@@ -44,7 +44,7 @@ $(OBJECTS): $$(GET_DEP) | $(OUT_DIR)
 	@ touch $@
 
 GET_DEP_LINT = $(filter $(patsubst $(OUT_DIR)/lint-%,%,$@)%,$(SOURCE_FILES))
-$(LINT_OBJECTS): $$(GET_DEP) | $(OUT_DIR)
+$(LINT_OBJECTS): $$(GET_DEP_LINT) | $(OUT_DIR)
 	$(eval EXERCISE := $(patsubst $(OUT_DIR)/lint-%,%,$@))
 	@ echo "Linting $(EXERCISE)..."
 	@ ls $(EXERCISE)/*.$(EXTENSION) | xargs -n1 | grep -v _test | xargs shellcheck
