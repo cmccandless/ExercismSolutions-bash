@@ -6,10 +6,10 @@ before_install:
   - make init
 
 before_script:
-  - make lint
+  - make lint check-migrate
 
 script:
-  - make test-all
+  - make no-skip test
 
 addons:
   apt:
