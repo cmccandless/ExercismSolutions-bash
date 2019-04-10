@@ -40,7 +40,7 @@ addSpacing() {
   chunksize="${1:-5}"
   read -r -n "$chunksize" -s chunk
   printf '%s' "$chunk"
-  while read -r -n "$chunksize" -s chunk; do
+  while read -r -n "$chunksize" chunk; do
     if [ -n "$chunk" ]; then
       printf ' %s' "$chunk"
     fi
@@ -52,13 +52,12 @@ addSpacing() {
 #######################################
 transcode() {
   output=''
-  while read -r -n 1 -s ch; do
+  while read -r -n 1 ch; do
     if [ -n "$ch" ]; then
       if [[ "$ch" =~ [a-z] ]]; then
         ch="${REV[$(( $(ord "$ch") - START ))]}"
       fi
       output+="$ch"
-      # printf '%s' "$ch"
     fi
   done
   echo "$output"
