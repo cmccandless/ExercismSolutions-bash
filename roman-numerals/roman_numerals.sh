@@ -6,7 +6,7 @@ set -o nounset
 main() {
   number="${1}"
   
-  while read -a args; do
+  while read -ra args; do
     digit="${args[0]}"
     value="${args[1]}"
     while [ "$number" -ge "$value" ]; do
