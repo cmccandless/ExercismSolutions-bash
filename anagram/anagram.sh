@@ -17,16 +17,16 @@ clean()
 main() {
   base_word="${1^^}"
   clean_word="$(clean "$base_word")"
-  candidates=( $2 )
+  read -ra candidates <<<"$2"
 
   # Add your code here
   results=()
   for c in "${candidates[@]}"; do
     if [ "${c^^}" != "$base_word" ] && [ "$(clean "${c^^}")" == "$clean_word" ]; then
-      results+=($c)
+      results+=("$c")
     fi
   done
-  if [ ! -z "${results:+x}" ]; then echo "${results[@]}"; fi
+  if [ -n "${results:+x}" ]; then echo "${results[@]}"; fi
 }
 
 main "$@"
