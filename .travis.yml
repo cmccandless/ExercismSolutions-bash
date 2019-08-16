@@ -4,9 +4,6 @@ dist: xenial
 sudo: false
 
 before_install:
-  - apt-get update
-
-install:
   - make init
 
 before_script:
